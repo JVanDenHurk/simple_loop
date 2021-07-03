@@ -1,14 +1,42 @@
 user_input = ""
+is_started = False
 
-while user_input.lower() != "quit":
-    user_input = input("> ")
-    if user_input.lower() == "help":
-        print(f"start - to start the car \nstop - to stop the car \nquit - to exit \n")
-    elif user_input.lower() == "start":
-        print(f"Car started...Ready to go! \n")
-    elif user_input.lower() == "stop":
-        print(f"Car  Stopped.\n")
+while True:
+    user_input = input("> ").lower()
+    if user_input == "help":
+        print("""
+start - to start the car 
+stop - to stop the car 
+quit - to quit
+        """)
+    elif user_input == "start" and is_started == False:
+        print("Car started...Ready to go! \n")
+        is_started = True
+    elif user_input == "stop" and is_started == True:
+        print("Car  Stopped.\n")
+        is_started = False
+    elif user_input == "start" and is_started == True:
+        print("The car is already started!\n")
+    elif user_input == "stop" and is_started == False:
+        print("Car is already stopped!\n")
     elif user_input == "quit":
-        print("")
+        break
     else:
         print("I don't understand that...\n")
+
+# ## Another Way is ##
+
+# # veration one
+# if user_input == "start":
+#     if is_started:
+#         print("Car already started!")
+#     else:
+#     is_started = True
+#     print("Car started...")
+
+# # veration two
+# if user_input == "start" and is_started == False:
+#     print("Car started...Ready to go! \n")
+#     is_started = True
+# elif user_input == "start" and is_started == True:
+#     print("The car is already started!\n")
